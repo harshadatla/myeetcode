@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+frontend/node_modules/
+
+# Build artifacts
+.next/
+frontend/.next/
+frontend/out/
+backend/build/
+backend/.gradle/
+
+# IDE
+.idea/
+.vscode/
+*.iml
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
+*.env
+.env*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+
+# Docker
+docker-compose.override.yml
+
+# Gradle
+backend/gradle-app.setting
+backend/.gradle/
+backend/build/
+backend/bin/
+backend/out/
+
+# Plan files (keep in repo)
+# .hermes/

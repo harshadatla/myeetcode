@@ -1,0 +1,84 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: myeetcode-postgres
+    environment:
+      POSTGRES_DB: mycodequest
+      POSTGRES_USER: quest
+      POSTGRES_PASSWORD: questpass
+    ports:
+      - '5432:5432'
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U quest -d mycodequest']
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  judge0-server:
+    image: judge0/judge0-server:1.13.1
+    container_name: myeetcode-judge0
+    environment:
+      REDIS_URL: redis://judge0-redis:6379
+      POSTGRES_HOST: judge0-postgres
+      POSTGRES_USER: judge0
+      POSTGRES_PASSWORD: judge0pass
+      POSTGRES_DB: judge0
+    ports:
+      - '2358:2358'
+    depends_on:
+      judge0-redis:
+        condition: service_started
+      judge0-postgres:
+        condition: service_started
+    restart: unless-stopped
+
+  judge0-redis:
+    image: redis:7-alpine
+    container_name: myeetcode-judge0-redis
+
+  judge0-postgres:
+    image: postgres:16-alpine
+    container_name: myeetcode-judge0-postgres
+    environment:
+      POSTGRES_DB: judge0
+      POSTGRES_USER: judge0
+      POSTGRES_PASSWORD: judge0pass
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: myeetcode-backend
+    environment:
+      SPRING_PROFILES_ACTIVE: dev
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/mycodequest
+      SPRING_DATASOURCE_USERNAME: quest
+      SPRING_DATASOURCE_PASSWORD: questpass
+      JUDGE0_URL: http://judge0-server:2358
+      JWT_SECRET: dev-secret-change-in-prod-12345678901234567890
+    ports:
+      - '8080:8080'
+    depends_on:
+      postgres:
+        condition: service_healthy
+      judge0-server:
+        condition: service_started
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: myeetcode-frontend
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:8080/api
+    ports:
+      - '3000:3000'
+    depends_on:
+      - backend
+
+volumes:
+  pgdata:
