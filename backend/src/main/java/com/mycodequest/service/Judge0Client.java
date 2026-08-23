@@ -39,6 +39,7 @@ public class Judge0Client {
                 "memory_limit", memoryLimit
         );
 
+        @SuppressWarnings("unchecked")
         Map<String, String> response = client.post()
                 .uri(judge0Url + "/submissions?base64_encoded=false")
                 .contentType(MediaType.APPLICATION_JSON)
