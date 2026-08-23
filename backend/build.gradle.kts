@@ -34,6 +34,8 @@ dependencies {
     runtimeOnly("org.postgresql:postgresql")
     implementation("org.flywaydb:flyway-core")
     runtimeOnly("org.flywaydb:flyway-database-postgresql")
+    // H2 for local dev without PostgreSQL
+    runtimeOnly("com.h2database:h2")
 
     // JWT
     implementation("io.jsonwebtoken:jjwt-api:0.12.6")
