@@ -1,11 +1,11 @@
 export const REALMS = [
-  { id: 1, name: 'Forest of Fundamentals', icon: '🌲', color: '#10b981', desc: 'Java basics: loops, conditionals, methods' },
-  { id: 2, name: 'Caves of Arrays', icon: '🕳️', color: '#3b82f6', desc: 'Arrays, two pointers, sliding window' },
-  { id: 3, name: 'String Mountains', icon: '⛰️', color: '#f59e0b', desc: 'String manipulation, StringBuilder, regex' },
-  { id: 4, name: 'Sorting Citadel', icon: '🏰', color: '#ef4444', desc: 'Sorting algorithms, binary search' },
-  { id: 5, name: 'Hash Marshlands', icon: '🌊', color: '#8b5cf6', desc: 'HashMap, HashSet, Collections' },
-  { id: 6, name: 'Linked List Labyrinth', icon: '🔗', color: '#ec4899', desc: 'Linked lists, stacks, queues' },
-  { id: 7, name: 'Tree Sanctuary', icon: '🌳', color: '#14b8a6', desc: 'Trees, BSTs, recursion, graphs' },
+  { id: 1, name: 'Forest of Fundamentals', icon: '🌲', color: '#a6e3a1', desc: 'Java basics: loops, conditionals, methods' },
+  { id: 2, name: 'Caves of Arrays', icon: '🕳️', color: '#89b4fa', desc: 'Arrays, two pointers, sliding window' },
+  { id: 3, name: 'String Mountains', icon: '⛰️', color: '#fab387', desc: 'String manipulation, StringBuilder, regex' },
+  { id: 4, name: 'Sorting Citadel', icon: '🏰', color: '#f38ba8', desc: 'Sorting algorithms, binary search' },
+  { id: 5, name: 'Hash Marshlands', icon: '🌊', color: '#cba6f7', desc: 'HashMap, HashSet, Collections' },
+  { id: 6, name: 'Linked List Labyrinth', icon: '🔗', color: '#f5c2e7', desc: 'Linked lists, stacks, queues' },
+  { id: 7, name: 'Tree Sanctuary', icon: '🌳', color: '#74c7ec', desc: 'Trees, BSTs, recursion, graphs' },
 ] as const;
 
 export const RANKS = [
