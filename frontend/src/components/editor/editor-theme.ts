@@ -1,0 +1,28 @@
+export const questTheme = {
+  base: 'vs-dark',
+  inherit: true,
+  rules: [
+    { token: 'keyword', foreground: 'c084fc' },
+    { token: 'string', foreground: '4ade80' },
+    { token: 'number', foreground: 'fbbf24' },
+    { token: 'comment', foreground: '71717a' },
+    { token: 'type', foreground: '60a5fa' },
+    { token: 'delimiter', foreground: 'a78bfa' },
+    { token: 'identifier', foreground: 'e4e4e7' },
+  ],
+  colors: {
+    'editor.background': '#0a0a0f',
+    'editor.foreground': '#e4e4e7',
+    'editorLineNumber.foreground': '#3f3f46',
+    'editor.selectionBackground': '#8b5cf633',
+    'editor.lineHighlightBackground': '#13131f',
+    'editorCursor.foreground': '#8b5cf6',
+    'editorIndentGuide.background': '#27272a',
+    'editorIndentGuide.activeBackground': '#3f3f46',
+    'editorGutter.background': '#0a0a0f',
+    'editorWidget.background': '#13131f',
+    'editorWidget.border': '#27272a',
+    'editorSuggestWidget.background': '#13131f',
+    'editorSuggestWidget.selectedBackground': '#8b5cf633',
+  },
+};

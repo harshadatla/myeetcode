@@ -17,11 +17,14 @@ public class AuthService {
     private final UserRepository userRepo;
     private final PasswordEncoder passwordEncoder;
     private final JwtTokenProvider tokenProvider;
+    private final SkillTreeService skillTreeService;
 
-    public AuthService(UserRepository userRepo, PasswordEncoder passwordEncoder, JwtTokenProvider tokenProvider) {
+    public AuthService(UserRepository userRepo, PasswordEncoder passwordEncoder,
+                        JwtTokenProvider tokenProvider, SkillTreeService skillTreeService) {
         this.userRepo = userRepo;
         this.passwordEncoder = passwordEncoder;
         this.tokenProvider = tokenProvider;
+        this.skillTreeService = skillTreeService;
     }
 
     @Transactional
@@ -35,6 +38,9 @@ public class AuthService {
 
         User user = new User(req.email(), req.username(), passwordEncoder.encode(req.password()));
         userRepo.save(user);
+
+        // Initialize skill tree progress for the new user
+        skillTreeService.initSkillTree(user.getId());
 
         String token = tokenProvider.generate(user.getId(), user.getUsername());
         return toAuthResponse(user, token);
