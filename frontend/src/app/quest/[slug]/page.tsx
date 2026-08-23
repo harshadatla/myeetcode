@@ -8,6 +8,7 @@ import { Badge } from '@/components/ui/badge';
 import { Card } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { CodeEditor } from '@/components/editor/code-editor';
+import { OraclePanel } from '@/components/problem/oracle-panel';
 import { api } from '@/lib/api';
 import { toast } from 'sonner';
 import { Play, Send, RotateCcw, Lightbulb, Lock, AlertCircle } from 'lucide-react';
@@ -112,16 +113,8 @@ export default function ProblemPage() {
           </div>
         </div>
 
-        {/* Oracle Panel placeholder */}
-        <div className="mt-6 rounded-xl border border-primary/20 bg-secondary/30 p-4">
-          <div className="flex items-center gap-2 mb-3">
-            <span className="text-xl">🔮</span>
-            <h3 className="font-heading text-sm text-primary/80">The Oracle's Guidance</h3>
-          </div>
-          <p className="text-xs text-muted">
-            Hints will appear here after backend integration. Unlock 5 layers of help, from a gentle nudge to near-complete solution.
-          </p>
-        </div>
+        {/* Oracle Panel — Intelligent Hinting System */}
+        <OraclePanel problemSlug={slug} />
       </div>
 
       {/* Center: Code editor + actions */}
